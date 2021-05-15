@@ -1,9 +1,9 @@
 import React from 'react';
-import Colours from './Colours/Colours';
+import Canvas from './Canvas';
 
 function App() {
   return (
-    <Colours />
+    <Canvas />
   );
 }
 
