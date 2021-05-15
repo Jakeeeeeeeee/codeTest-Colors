@@ -6,15 +6,17 @@ const Colours = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
-    const size = 256;
-    const data = context.getImageData(0, 0, size, 128);
+    const width = 256;
+    const height = 128;
+
+    const data = context.getImageData(0, 0, width, height);
   
     /* rotate a quadrant */
     function rotateXy(n, p, r) {
       if (r.y === 0) {
         if (r.x === 1) {
-            p.x = n-1 - p.x;
-            p.y = n-1 - p.y;
+          p.x = n-1 - p.x;
+          p.y = n-1 - p.y;
         }
 
         /* Swap x and y */
@@ -27,6 +29,7 @@ const Colours = () => {
     /* to get the data by xy */
     function dataByXy (n, p) {
       p = {x: p.x, y: p.y};
+
       let r = {x: 0, y: 0}, s, d=0;
 
       for (s=(n/2)|0; s>0; s=(s/2)|0) {
@@ -56,10 +59,11 @@ const Colours = () => {
     }
 
     /* for loop 32,768 times to put data into imagedata */
-    for (let i = 0; i < size; i++) {
-      for (let j = 0; j < size; j++) {
+    for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
         const p = {x: j, y: i};
-        putData(data.data, size, p, dataByXy(size, p));
+
+        putData(data.data, width, p, dataByXy(width, p));
       }
     }
 
