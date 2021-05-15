@@ -1,15 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import useCanvas from '../hooks/useCanvas/useCanvas';
 
-const Colours = () => {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
+const Canvas = () => {
+  
+  const drawCurve = (ctx) => {
     const width = 256;
     const height = 128;
-
-    const data = context.getImageData(0, 0, width, height);
+    const data = ctx.getImageData(0, 0, width, height);
   
     /* rotate a quadrant */
     function rotateXy(n, p, r) {
@@ -20,7 +17,7 @@ const Colours = () => {
         }
 
         /* Swap x and y */
-        let t  = p.x;
+        const t  = p.x;
         p.x = p.y;
         p.y = t;
       }
@@ -48,8 +45,8 @@ const Colours = () => {
     }
 
     /* To put the data into imagedata */
-    function putData(arr, size, coord, v) {
-      const pos = (coord.x + size * coord.y) * 4;
+    function putData(arr, width, coord, v) {
+      const pos = (coord.x + width * coord.y) * 4;
       const rgb = rgbByData(v);
 
       arr[pos] = (rgb & 0xff0000) >> 16;
@@ -68,12 +65,14 @@ const Colours = () => {
     }
 
     /* To draw the image by imagedata */
-    context.putImageData(data, 0, 0);
-  })
+    ctx.putImageData(data, 0, 0);
+  }
+  
+  const canvasRef = useCanvas(drawCurve);
 
   return (
     <canvas ref={canvasRef} width="256px" height="128px"/>
   );
 }
 
-export default Colours;
+export default Canvas;
