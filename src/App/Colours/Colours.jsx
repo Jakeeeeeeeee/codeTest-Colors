@@ -30,12 +30,14 @@ const Colours = () => {
       let r = {x: 0, y: 0},
           s,
           d=0;
+
       for (s=(n/2)|0; s>0; s=(s/2)|0) {
           r.x = (p.x & s) > 0 ? 1 : 0;
           r.y = (p.y & s) > 0 ? 1 : 0;
           d += s * s * ((3 * r.x) ^ r.y);
           rotateXy(s, p, r);
       }
+      
       return d;
     }
 
