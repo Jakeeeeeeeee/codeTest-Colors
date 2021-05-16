@@ -1,6 +1,15 @@
 # The codeTest from EHG
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App] To produce an image with 32,768 discrete colours on a Hilbert curve in ReactJs.
+
+In the project, there are two main components to produce this image.
+ 1)Canvas: in the Canvas component, I write a 'drawCurve' function and canvas element.
+ 
+    Everytime the canvas element is rendered, the useCanvas will be called to call 'drawCurve' function.
+    
+    In the 'drawCurve' function, through the loop of width and height, to get the postion of XY, to get the number of RGB and return      them to ImageData to draw the image.
+    
+ 2)useCanvas: in the useCanvas component, I write hooks with useRef(to access the canvas element) and useEffect(wait the component      did mount properly before get the real canvas, otherwise will be null in the case). Everytime you want to draw a new image, you       can reuse the useCanvas with relevant function to a new one.
 
 ## Available Scripts
 
@@ -11,22 +20,11 @@ In the colours directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You will also see any lint errors in the console.
-
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
 
