@@ -6,13 +6,13 @@ To produce an image with 32,768 discrete colours on a Hilbert curve in ReactJs.
 
 In the project, there are two main components to produce this image.
 
-1) Canvas: in the Canvas component, I write a 'drawCurve' function and a canvas element.
+1. Canvas: in the Canvas component, I write a 'drawCurve' function and a canvas element.
  
-    Everytime the canvas element is rendered, the useCanvas will be called to call 'drawCurve' function.
+    - Everytime the canvas element is rendered, the useCanvas will be called to call 'drawCurve' function.
     
-    In the 'drawCurve' function, through the loop of width and height, to get the postion of XY, to get the number of RGB and return them to the ImageData to draw the image.
+    - In the 'drawCurve' function, through the loop of width and height, to get the postion of XY, to get the number of RGB and   return them to the ImageData to draw the image.
     
-2) useCanvas: in the useCanvas component, I write hooks with useRef(to access the canvas element) and useEffect(wait the component      did mount properly before get the real canvas, otherwise will be null in the case). Everytime you want to draw a new image,         you can reuse the useCanvas with the relevant function to draw a new one.
+2. useCanvas: in the useCanvas component, I write hooks with useRef(to access the canvas element) and useEffect(wait the component      did mount properly before get the real canvas, otherwise will be null in the case). Everytime you want to draw a new image,         you can reuse the useCanvas with the relevant function to draw a new one.
 
 ## Available Scripts
 
