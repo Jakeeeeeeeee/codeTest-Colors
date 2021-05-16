@@ -40,14 +40,14 @@ const Canvas = () => {
     }
 
     /* To get RGB */
-    function rgbByData(v) {
-      return ((v & 0xf800) << 8) | ((v & 0x7e0) << 5) | ((v & 0x1f) << 3); 
+    function rgbByData(d) {
+      return ((d & 0xf800) << 8) | ((d & 0x7e0) << 5) | ((d & 0x1f) << 3); 
     }
 
-    /* To put the RGB with the position into Imagedata */
-    function putData(arr, width, coord, v) {
+    /* To get RGB by data from XY and put the RGB into Imagedata */
+    function putData(arr, width, coord, d) {
       const pos = (coord.x + width * coord.y) * 4;
-      const rgb = rgbByData(v);
+      const rgb = rgbByData(d);
 
       arr[pos] = (rgb & 0xff0000) >> 16;
       arr[pos + 1] = (rgb & 0xff00) >> 8;
@@ -55,7 +55,7 @@ const Canvas = () => {
       arr[pos + 3] = 0xff;
     }
 
-    /* For loop 32,768 times to get the position and RGB, and put data into imagedata */
+    /* For loop 32,768 times to get the position and RGB, and put them into Imagedata */
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
         const p = { x: j, y: i };
