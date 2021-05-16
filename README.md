@@ -14,7 +14,7 @@ In the project, there are two main components to produce this image.
     
 2. useCanvas: in the useCanvas component, I write hooks with useRef(to access the canvas element) and useEffect(wait the component      did mount properly before get the real canvas, otherwise will be null in the case). Everytime you want to draw a new image,         you can reuse the useCanvas with the relevant function to draw a new one.
 
-#Rest 
+# Rest 
 
 If I have the more time for this project, I will write an unit test for the Canvas.
 
