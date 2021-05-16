@@ -8,7 +8,7 @@ const Canvas = () => {
   const drawCurve = (ctx) => {
     const data = ctx.getImageData(0, 0, width, height);
   
-    /* rotate a quadrant */
+    /* Rotate a quadrant */
     function rotateXY(n, p, r) {
       if (r.y === 0) {
         if (r.x === 1) {
@@ -23,11 +23,11 @@ const Canvas = () => {
       }
     }
       
-    /* to get the data by xy */
+    /* To get the data by xy */
     function dataByXY (n, p) {
-      p = {x: p.x, y: p.y};
+      p = { x: p.x, y: p.y };
 
-      let r = {x: 0, y: 0}, s, d = 0;
+      let r = { x: 0, y: 0 }, s, d = 0;
 
       for (s = (n/2)|0; s>0; s = (s/2)|0) {
         r.x = (p.x & s) > 0 ? 1 : 0;
@@ -44,7 +44,7 @@ const Canvas = () => {
       return ((v & 0xf800) << 8) | ((v & 0x7e0) << 5) | ((v & 0x1f) << 3); 
     }
 
-    /* To put the data into imagedata */
+    /* To put the RGB with the position into Imagedata */
     function putData(arr, width, coord, v) {
       const pos = (coord.x + width * coord.y) * 4;
       const rgb = rgbByData(v);
@@ -55,7 +55,7 @@ const Canvas = () => {
       arr[pos + 3] = 0xff;
     }
 
-    /* for loop 32,768 times to put data into imagedata */
+    /* For loop 32,768 times to get the position and RGB, and put data into imagedata */
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
         const p = { x: j, y: i };
@@ -64,7 +64,7 @@ const Canvas = () => {
       }
     }
 
-    /* To draw the image by imagedata */
+    /* Return the Imagedata to draw the image */
     ctx.putImageData(data, 0, 0);
   }
   
