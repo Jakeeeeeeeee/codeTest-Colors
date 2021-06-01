@@ -1,4 +1,4 @@
-# The codeTest from EHG
+# The codeTest
 
 This project was bootstrapped with [Create React App] 
 
